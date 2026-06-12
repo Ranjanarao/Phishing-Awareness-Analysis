@@ -1,0 +1,47 @@
+# Phishing Awareness Analysis
+
+phishing_keywords = [
+    "urgent", "verify", "password", "bank",
+    "login", "click here", "account suspended",
+    "update", "winner", "claim"
+]
+
+sample_message = """
+Dear User,
+
+Your bank account has been suspended.
+Please click here and verify your password immediately.
+Failure to do so will result in permanent account closure.
+
+Regards,
+Support Team
+"""
+
+print("===== PHISHING AWARENESS ANALYSIS =====")
+print("\nMessage:\n")
+print(sample_message)
+
+found_keywords = []
+
+for keyword in phishing_keywords:
+    if keyword.lower() in sample_message.lower():
+        found_keywords.append(keyword)
+
+print("\nSuspicious Keywords Found:")
+for word in found_keywords:
+    print("-", word)
+
+print("\nRed Flags:")
+print("- Creates urgency")
+print("- Requests password verification")
+print("- Suspicious link request")
+print("- Threatens account closure")
+
+print("\nWhy is this Unsafe?")
+print("This message attempts to scare the user into revealing sensitive information.")
+print("Legitimate organizations rarely ask for passwords through email.")
+
+if found_keywords:
+    print("\nResult: Potential Phishing Attempt Detected!")
+else:
+    print("\nResult: No major phishing indicators found.")
